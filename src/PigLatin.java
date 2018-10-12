@@ -8,7 +8,7 @@ public class PigLatin {
 		}
 	public static void input() {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Input a word:");
+		System.out.println("Input a word or a sentence but no numbers or special characters(punctuation is fine and appreciated):");
 		if (sc.hasNextDouble()) {
 			System.out.println("Oops. No numbers.");
 			input();
@@ -37,12 +37,12 @@ public class PigLatin {
 	}
 	public static void makePigLatin(String s) {
 		String answer = "";
-		for (int i = 1; i < s.length(); i++) {
+		for (int i = 0; i < s.length(); i++) {
 			if ("aeiouAEIOU".indexOf(s.charAt(0)) != -1) {
 				answer = s + "way";
 				break;
 			}
-			else if ("aeiouAEIOU".indexOf(s.charAt(i)) != -1) {
+			if ("aeiouAEIOU".indexOf(s.charAt(i)) != -1) {
 				if (s.substring(0,1).equals(s.substring(0,1).toUpperCase())) {
 					answer = s.substring(i, i+1).toUpperCase() + s.substring(i+1) + s.substring(0, i).toLowerCase() + "ay";
 				}
@@ -50,6 +50,18 @@ public class PigLatin {
 				answer = s.substring(i) + s.substring(0, i) + "ay";
 				}
 				break;
+			}
+			else {
+				answer = s;
+			}
+		}
+		
+		//this for loop is to check punctuation and put it in it's proper spot
+		for (int i = 0; i < answer.length(); i++) {
+			if (".,?!".indexOf(answer.charAt(i)) >= 0) {
+				String finalAnswer = answer.substring(0, i) + answer.substring(i+1, answer.length()) + answer.substring(i, i+1);
+				System.out.print(finalAnswer + " ");
+				return;
 			}
 		}
 		System.out.print(answer + " ");
