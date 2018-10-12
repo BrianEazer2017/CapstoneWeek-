@@ -8,7 +8,7 @@ public class PigLatin {
 		}
 	public static void input() {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Input a word or a sentence but no numbers or special characters(punctuation is fine and appreciated):");
+		System.out.println("Input a word or a sentence but no numbers or special characters(punctuation is fine and appreciated but no parentheses and no consecutive punctuation marks haha lol):");
 		if (sc.hasNextDouble()) {
 			System.out.println("Oops. No numbers.");
 			input();
