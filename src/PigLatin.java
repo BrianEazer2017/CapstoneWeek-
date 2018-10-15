@@ -64,7 +64,27 @@ public class PigLatin {
 				return;
 			}
 		}
+		if (answer.indexOf("(") != -1 || answer.indexOf(")") != -1) {
+			System.out.print(parentheses(answer));
+			return;
+		}
 		System.out.print(answer + " ");
+	}
+	private static String parentheses(String answer) {
+		// TODO Auto-generated method stub
+		StringBuilder sb = new StringBuilder(answer);
+		if (answer.contains(")") && answer.contains("(")) {
+			sb = sb.deleteCharAt(sb.indexOf("("));
+			sb = sb.deleteCharAt(sb.indexOf(")"));
+			return ("(" + sb + ")").toString() + " ";
+		} else if (answer.contains("(")) {
+			sb = sb.deleteCharAt(sb.indexOf("("));
+			return ("(" + sb).toString() + " ";
+		} else {
+			sb = sb.deleteCharAt(sb.indexOf(")"));
+			return (sb + ")").toString() + " ";
+		}
+		
 	}
 	private static void askToContinue() {
 		// TODO Auto-generated method stub
